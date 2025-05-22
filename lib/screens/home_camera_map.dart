@@ -220,6 +220,49 @@ class _HomeCameraMapState extends State<HomeCameraMap> {
                           style: const TextStyle(color: kPrimaryColor),
                         ),
                       ),
+                    const SizedBox(height: 30),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_imageFile == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Silakan ambil atau pilih gambar terlebih dahulu')),
+                            );
+                            return;
+                          }
+                          if (_formKey.currentState!.validate()) {
+                            if (alamatDipilih == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Pilih lokasi terlebih dahulu')),
+                              );
+                              return;
+                            }
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DaftarPlant(
+                                  nama: _namaController.text,
+                                  jenis: _jenisController.text,
+                                  lokasi: alamatDipilih!,
+                                  image: _imageFile,
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: kPrimaryColor,
+                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: const Text(
+                          'Simpan',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
