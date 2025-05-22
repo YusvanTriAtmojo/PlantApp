@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -21,6 +22,27 @@ class BottomNavBar extends StatelessWidget {
             offset: Offset(0, -10),
             blurRadius: 35,
             color: const Color(0xFF0C9869).withAlpha(97),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset("assets/icons/flower.svg"),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset("assets/icons/heart-icon.svg"),
+            onPressed: () {},
+          ),
+          IconButton(
+           icon: Icon(Icons.camera_alt, color: Color(0xFF0C9869)),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset("assets/icons/user-icon.svg"),
+            onPressed: () {},
           ),
         ],
       ),
