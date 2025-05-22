@@ -6,6 +6,32 @@ class RecomendPlant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: <Widget>[
+          RecomendPlantCard(
+            image: "assets/images/image_1.png",
+            title: "Samantha",
+            country: "Jawa Tengah",
+            price: 150,
+            press: () {},
+          ),
+          RecomendPlantCard(
+            image: "assets/images/image_2.png",
+            title: "Angelica",
+            country: "Bandung",
+            price: 240,
+            press: () {},
+          ),
+          RecomendPlantCard(
+            image: "assets/images/image_3.png",
+            title: "Samantha",
+            country: "Russia",
+            price: 440,
+            press: () {},
+          ),
+        ],
+      ),
     );
   }
 }
