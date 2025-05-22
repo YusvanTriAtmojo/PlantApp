@@ -2,8 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:plant_app/screens/daftar_plant.dart';
 import 'package:plant_app/screens/kamera/camera_page.dart';
 import 'package:plant_app/screens/kamera/helper/storage_helper.dart';
+import 'package:plant_app/screens/map/map_page.dart';
 
 const kPrimaryColor = Color(0xFF0C9869);
 
@@ -191,6 +193,33 @@ class _HomeCameraMapState extends State<HomeCameraMap> {
                       validator: (value) =>
                         value == null || value.isEmpty ? 'Jenis tidak boleh kosong' : null,
                     ),
+                    const SizedBox(height: 20),
+                    const Text('🗺️ Pilih Lokasi Tumbuhan', style: TextStyle(fontWeight: FontWeight.bold)),
+                    ElevatedButton.icon(
+                      icon: const Icon(Icons.map, color: Colors.lightBlueAccent,),
+                      label: const Text('Peta', style: TextStyle(color: Colors.white),),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: kPrimaryColor,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                      ),
+                      onPressed: () async {
+                        final result = await Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const MapPage()),
+                        );
+                        if (result != null) {
+                          setState(() => alamatDipilih = result);
+                        }
+                      },
+                    ),
+                    if (alamatDipilih != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text('Lokasi: $alamatDipilih',
+                          style: const TextStyle(color: kPrimaryColor),
+                        ),
+                      ),
                   ],
                 ),
               ),
