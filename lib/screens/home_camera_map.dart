@@ -139,6 +139,61 @@ class _HomeCameraMapState extends State<HomeCameraMap> {
                 )
               else
                 const Text('Belum ada gambar diambil/dipilih.', style: TextStyle(fontStyle: FontStyle.italic)),
+              SizedBox(height: 30),
+              Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Biodata Tumbuhan',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    const Text('Nama Tumbuhan'),
+                    TextFormField(
+                      controller: _namaController,
+                      decoration: InputDecoration(
+                        hintText: 'Masukkan Nama Tumbuhan',
+                        filled: true,
+                        fillColor: Colors.grey.shade100,
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(color: kPrimaryColor, width: 2),
+                        ),
+                      ),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) =>
+                        value == null || value.isEmpty ? 'Nama tidak boleh kosong' : null,
+                    ),
+                    const SizedBox(height: 16),
+                    const Text('Jenis Tumbuhan'),
+                    TextFormField(
+                      controller: _jenisController,
+                      decoration: InputDecoration(
+                        hintText: 'Masukkan Jenis Tumbuhan',
+                        filled: true,
+                        fillColor: Colors.grey.shade100,
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(color: kPrimaryColor, width: 2),
+                        ),
+                      ),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) =>
+                        value == null || value.isEmpty ? 'Jenis tidak boleh kosong' : null,
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
