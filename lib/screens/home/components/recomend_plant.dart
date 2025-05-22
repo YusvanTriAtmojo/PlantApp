@@ -1,0 +1,97 @@
+import 'package:flutter/material.dart';
+
+class RecomendPlant extends StatelessWidget {
+  const RecomendPlant({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+    );
+  }
+}
+
+class RecomendPlantCard extends StatelessWidget {
+  const RecomendPlantCard({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.country,
+    required this.price,
+    required this.press,
+  });
+
+  final String image, title, country;
+  final int price;
+  final VoidCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    final textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      margin: const EdgeInsets.only(
+        left: 20,
+        top: 10,
+        bottom: 50,
+      ),
+      width: size.width * 0.4,
+      child: Column(
+        children: <Widget>[
+          Image.asset(image),
+          GestureDetector(
+            onTap: press,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 10),
+                    blurRadius: 50,
+                    color: const Color(0xFF0C9869).withValues(alpha: 59),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: <Widget>[
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "${title.toUpperCase()}\n",
+                          style: textTheme.labelLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: country.toUpperCase(),
+                          style: TextStyle(
+                          color: const Color(0xFF0C9869).withAlpha(128),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    '\$$price',
+                    style: textTheme.labelLarge?.copyWith(
+                      color: const Color(0xFF0C9869),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
