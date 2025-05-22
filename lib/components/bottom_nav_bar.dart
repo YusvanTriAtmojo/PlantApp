@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:plant_app/screens/home_camera_map.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -38,7 +39,12 @@ class BottomNavBar extends StatelessWidget {
           ),
           IconButton(
            icon: Icon(Icons.camera_alt, color: Color(0xFF0C9869)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeCameraMap()),
+              );
+            },
           ),
           IconButton(
             icon: SvgPicture.asset("assets/icons/user-icon.svg"),
